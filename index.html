@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Easy Notes | Modern & Professional</title>
+
+    <!-- Google Fonts: outfit for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar / Navigation -->
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="logo-icon">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              ></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <h1>Easy Notes</h1>
+        </div>
+
+        <nav class="nav-menu">
+          <button class="nav-item active" id="nav-all">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <span>All Notes</span>
+          </button>
+          <button class="nav-item" id="nav-favorites">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              ></polygon>
+            </svg>
+            <span>Favorites</span>
+          </button>
+          <button class="nav-item archive" id="nav-archive">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="21 8 21 21 3 21 3 8"></polyline>
+              <rect x="1" y="3" width="22" height="5"></rect>
+              <line x1="10" y1="12" x2="14" y2="12"></line>
+            </svg>
+            <span>Archive</span>
+          </button>
+        </nav>
+
+        <label class="switch" id="theme-toggle">
+          <input type="checkbox" id="theme-checkbox">
+          <span class="slider"></span>
+        </label>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="top-bar">
+          <div class="search-bar">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Search your notes..."
+            />
+          </div>
+          <div class="sort-wrapper">
+            <button class="sort-btn" id="sort-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" y1="6" x2="16" y2="6"></line>
+                <line x1="4" y1="12" x2="13" y2="12"></line>
+                <line x1="4" y1="18" x2="10" y2="18"></line>
+              </svg>
+              <span id="sort-label">Date</span>
+            </button>
+            <div class="sort-dropdown hidden" id="sort-dropdown">
+              <button class="sort-option active" data-sort="date">Date Modified</button>
+              <button class="sort-option" data-sort="priority">Priority</button>
+              <button class="sort-option" data-sort="alpha">Alphabetical</button>
+              <button class="sort-option" data-sort="dueDate">Due Date</button>
+            </div>
+          </div>
+          <button class="add-note-btn" id="add-note-btn">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>New Note</span>
+          </button>
+        </header>
+
+        <div class="content-wrapper">
+          <h2 class="section-title">Your Notes</h2>
+          <div class="notes-grid" id="notes-grid">
+            <!-- Note items will be injected here via JS -->
+          </div>
+
+          <div class="empty-state hidden" id="empty-state">
+            <div class="empty-icon">
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                ></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="12" y1="18" x2="12" y2="12"></line>
+                <line x1="9" y1="15" x2="15" y2="15"></line>
+              </svg>
+            </div>
+            <h3>Start capturing ideas</h3>
+            <p>Click the "New Note" button to get started.</p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal for New/Edit Note -->
+    <div class="modal-overlay" id="note-modal">
+      <div class="modal-container">
+        <div class="modal-header">
+          <div class="modal-title-wrapper">
+             <h3 id="modal-title">Create Note</h3>
+             <button class="pin-btn" id="btn-pin" title="Pin Note">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg>
+             </button>
+          </div>
+          <button class="close-modal" id="close-modal">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body" id="modal-body">
+          <input
+            type="text"
+            id="note-title-input"
+            placeholder="Title"
+            autocomplete="off"
+          />
+          
+          <div class="tags-input-container">
+              <div id="tags-list" class="tags-list"></div>
+              <input type="text" id="tag-input" placeholder="#AddTag" autocomplete="off">
+          </div>
+
+          <!-- Priority Selector -->
+          <div class="priority-selector">
+            <label>Priority:</label>
+            <button class="priority-btn high" data-priority="high">High</button>
+            <button class="priority-btn medium" data-priority="medium">Medium</button>
+            <button class="priority-btn low" data-priority="low">Low</button>
+            <button class="priority-btn" data-priority="none">None</button>
+          </div>
+
+          <!-- Date/Time Section -->
+          <div class="datetime-section">
+            <div class="datetime-row">
+              <label>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                Reminder
+              </label>
+              <button class="datetime-picker-btn" id="reminder-btn" type="button">
+                <span id="reminder-display">Set reminder...</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              </button>
+              <input type="hidden" id="reminder-input">
+              <button class="clear-date-btn" id="clear-reminder" type="button">Clear</button>
+            </div>
+            <div class="datetime-row">
+              <label>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                Due Date
+              </label>
+              <button class="datetime-picker-btn" id="duedate-btn" type="button">
+                <span id="duedate-display">Set due date...</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              </button>
+              <input type="hidden" id="duedate-input">
+              <button class="clear-date-btn" id="clear-duedate" type="button">Clear</button>
+            </div>
+          </div>
+
+          <!-- Custom Date Picker Modal -->
+          <div class="custom-picker-overlay hidden" id="custom-picker-overlay">
+            <div class="custom-picker" id="custom-picker">
+              <div class="picker-header">
+                <button class="picker-nav-btn" id="picker-prev" type="button">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <span class="picker-month-year" id="picker-month-year">February 2026</span>
+                <button class="picker-nav-btn" id="picker-next" type="button">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
+              <div class="picker-days-header">
+                <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+              </div>
+              <div class="picker-days" id="picker-days"></div>
+              <div class="picker-time hidden" id="picker-time">
+                <label>Time:</label>
+                <input type="time" id="picker-time-input" value="12:00">
+              </div>
+              <div class="picker-actions">
+                <button class="picker-btn secondary" id="picker-cancel" type="button">Cancel</button>
+                <button class="picker-btn" id="picker-today" type="button">Today</button>
+                <button class="picker-btn primary" id="picker-confirm" type="button">Confirm</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Content Area -->
+          <div id="note-content-area" class="note-content-area">
+              <textarea
+                id="note-content-input"
+                placeholder="Type something..."
+                spellcheck="false"
+              ></textarea>
+              <div id="checklist-container" class="checklist-container hidden"></div>
+          </div>
+
+          <!-- Image Previews -->
+          <div id="image-preview-container" class="image-preview-list"></div>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-tools">
+             <!-- Colors -->
+            <div class="color-picker-wrapper">
+                <button class="tool-btn" id="btn-color" title="Color">
+                    <div class="color-indicator" id="current-color-indicator"></div>
+                </button>
+                <div class="color-palette hidden" id="color-palette">
+                    <button class="color-option" data-color="default" style="background: var(--bg-card); border: 1px solid var(--border-color);"></button>
+                    <button class="color-option" data-color="red" style="background: var(--color-red);"></button>
+                    <button class="color-option" data-color="orange" style="background: var(--color-orange);"></button>
+                    <button class="color-option" data-color="yellow" style="background: var(--color-yellow);"></button>
+                    <button class="color-option" data-color="green" style="background: var(--color-green);"></button>
+                    <button class="color-option" data-color="teal" style="background: var(--color-teal);"></button>
+                    <button class="color-option" data-color="blue" style="background: var(--color-blue);"></button>
+                    <button class="color-option" data-color="purple" style="background: var(--color-purple);"></button>
+                    <button class="color-option" data-color="pink" style="background: var(--color-pink);"></button>
+                </div>
+            </div>
+            
+            <div class="divider-vertical"></div>
+
+            <button
+              class="tool-btn"
+              id="toggle-favorite-btn"
+              title="Toggle Favorite"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                ></polygon>
+              </svg>
+            </button>
+            <div class="divider-vertical"></div>
+            <button class="tool-btn" id="btn-add-image" title="Add Image">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            </button>
+            <button class="tool-btn" id="btn-checklist" title="Toggle Checklist">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            </button>
+            <!-- Hidden Input -->
+            <input type="file" id="file-input" accept="image/*" style="display: none;" multiple>
+          </div>
+          <button class="save-btn" id="save-note-btn">Save Note</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Note Saved</div>
+
+    <!-- JS -->
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/datepicker.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
