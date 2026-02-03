@@ -15,9 +15,13 @@ A modern, feature-rich notes application with a beautiful UI, dark/light theme t
 
 ## 📸 Screenshots
 
-|       Main Page (Dark Mode)       |          Add/Edit Notes           |             Light Mode              |
-| :-------------------------------: | :-------------------------------: | :---------------------------------: |
-| ![Main Page](Images/MainPage.png) | ![Add Notes](Images/AddNotes.png) | ![Light Mode](Images/LightMode.png) |
+|       Main Page (Dark Mode)       |          Add/Edit Notes           |
+| :-------------------------------: | :-------------------------------: |
+| ![Main Page](Images/MainPage.png) | ![Add Notes](Images/AddNotes.png) |
+
+|             Light Mode              |         Custom Calendar          |
+| :---------------------------------: | :------------------------------: |
+| ![Light Mode](Images/LightMode.png) | ![Calendar](Images/calander.png) |
 
 ---
 
